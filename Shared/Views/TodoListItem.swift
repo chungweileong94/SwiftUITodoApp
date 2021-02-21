@@ -9,25 +9,37 @@ import SwiftUI
 
 struct TodoListItem: View {
     var title: String
+    var createAt: Date
     @Binding var isDone: Bool
-    
+
+    static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
+        return formatter
+    }()
+
     var body: some View {
         CheckBox(isChecked: $isDone) {
-            Text(title)
-                .strikethrough(isDone)
-                .lineLimit(1)
+            VStack(alignment: .leading) {
+                Text(title)
+                    .strikethrough(isDone)
+                    .lineLimit(1)
+                Text("\(createAt, formatter: Self.dateFormatter)")
+                    .font(.callout)
+                    .foregroundColor(.secondary)
+            }
             Spacer()
         }
-        .padding()
+        .padding(.vertical, 12)
     }
 }
 
 #if DEBUG
 struct TodoListItem_PreviewsController: View {
-    @State var item = TodoItem(title: "Todo Iten 1");
-    
+    @State var item = TodoItem(title: "Todo Iten 1")
+
     var body: some View {
-        TodoListItem(title: item.title, isDone: $item.isDone)
+        TodoListItem(title: item.title, createAt: item.createAt, isDone: $item.isDone)
     }
 }
 

@@ -10,16 +10,18 @@ import Foundation
 struct TodoItem: Identifiable {
     let id = UUID()
     var title: String
+    var note: String = ""
     var isDone: Bool = false
+    let createAt = Date()
 }
 
 class TodoStore: ObservableObject {
     @Published var items = [TodoItem]()
-    
+
     func addTodoItem(item: TodoItem) {
         items.append(item)
     }
-    
+
     func removeTodoItem(itemId: UUID) {
         items = items.filter { (item) -> Bool in
             item.id == itemId

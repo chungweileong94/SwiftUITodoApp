@@ -10,16 +10,20 @@ import SwiftUI
 struct TodoListView: View {
     @EnvironmentObject private var todoStore: TodoStore
     @State private var isTodoSheetPresented = false
-    
+
     func addTodo() {
         isTodoSheetPresented.toggle()
     }
-    
+
     var body: some View {
         NavigationView {
             List {
-                ForEach(Array(todoStore.items.enumerated()), id: \.element.id) { (index, item) in
-                    TodoListItem(title: item.title, isDone: $todoStore.items[index].isDone)
+                ForEach(Array(todoStore.items.enumerated()), id: \.element.id) { index, item in
+                    TodoListItem(
+                        title: item.title,
+                        createAt: item.createAt,
+                        isDone: $todoStore.items[index].isDone
+                    )
                 }
             }
             .navigationTitle("Todo")
@@ -30,6 +34,7 @@ struct TodoListView: View {
                     }
                 }
             }
+            .listStyle(InsetGroupedListStyle())
         }
         .sheet(isPresented: $isTodoSheetPresented) {
             TodoFormSheet(isPresented: $isTodoSheetPresented)
@@ -43,5 +48,3 @@ struct TodoListView_Previews: PreviewProvider {
             .environmentObject(TodoStore())
     }
 }
-
-

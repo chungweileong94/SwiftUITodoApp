@@ -24,16 +24,16 @@ private struct CustomToggleStyle: ToggleStyle {
 struct CheckBox<Label>: View where Label: View {
     @Binding var isChecked: Bool
     let label: Label
-    
+
     init(isChecked: Binding<Bool>, @ViewBuilder label: () -> Label) {
         self._isChecked = isChecked
         self.label = label()
     }
-    
+
     func toggle() {
         isChecked.toggle()
     }
-    
+
     var body: some View {
         Toggle(isOn: $isChecked) {
             label
@@ -45,7 +45,7 @@ struct CheckBox<Label>: View where Label: View {
 #if DEBUG
 struct CheckBox_PreviewsController: View {
     @State var isChecked: Bool
-    
+
     var body: some View {
         CheckBox(isChecked: $isChecked) {
             Text("Label")

@@ -23,8 +23,9 @@ struct TodoListView: View {
                         title: item.title,
                         createAt: item.createAt,
                         isDone: $todoStore.items[index].isDone
-                    )
+                    ) {}
                 }
+                .onDelete(perform: todoStore.deleteTodoItems)
             }
             .navigationTitle("Todo")
             .toolbar {

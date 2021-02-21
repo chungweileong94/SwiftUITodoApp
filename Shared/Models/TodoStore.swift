@@ -21,10 +21,8 @@ class TodoStore: ObservableObject {
     func addTodoItem(item: TodoItem) {
         items.append(item)
     }
-
-    func removeTodoItem(itemId: UUID) {
-        items = items.filter { (item) -> Bool in
-            item.id == itemId
-        }
+    
+    func deleteTodoItems(at offsets: IndexSet) {
+        items.remove(atOffsets: offsets)
     }
 }

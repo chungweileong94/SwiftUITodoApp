@@ -11,6 +11,7 @@ struct TodoListItem: View {
     var title: String
     var createAt: Date
     @Binding var isDone: Bool
+    var onInfoTap: () -> Void
 
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -29,8 +30,14 @@ struct TodoListItem: View {
                     .foregroundColor(.secondary)
             }
             Spacer()
+            Button(action: {}) {
+                Image(systemName: "info.circle")
+                    .foregroundColor(.blue)
+                    .font(.system(size: 24))
+            }
+            .buttonStyle(BorderlessButtonStyle())
         }
-        .padding(.vertical, 12)
+        .padding(.vertical, 8)
     }
 }
 
@@ -39,7 +46,7 @@ struct TodoListItem_PreviewsController: View {
     @State var item = TodoItem(title: "Todo Iten 1")
 
     var body: some View {
-        TodoListItem(title: item.title, createAt: item.createAt, isDone: $item.isDone)
+        TodoListItem(title: item.title, createAt: item.createAt, isDone: $item.isDone) {}
     }
 }
 

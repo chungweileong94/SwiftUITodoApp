@@ -33,7 +33,7 @@ struct TodoFormSheet: View {
                 ZStack(alignment: .topLeading) {
                     if formConfig.note.isEmpty {
                         Text("Note")
-                            .foregroundColor(Color(UIColor.systemGray3))
+                            .foregroundColor(Color(UIColor.placeholderText))
                             .padding(.vertical, 8)
                     }
                     TextEditor(text: $formConfig.note)

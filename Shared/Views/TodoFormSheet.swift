@@ -30,17 +30,7 @@ struct TodoFormSheet: View {
         NavigationView {
             Form {
                 TextField("Title", text: $formConfig.title)
-                ZStack(alignment: .topLeading) {
-                    if formConfig.note.isEmpty {
-                        Text("Note")
-                            .foregroundColor(Color(UIColor.placeholderText))
-                            .padding(.vertical, 8)
-                    }
-                    TextEditor(text: $formConfig.note)
-                        .padding(.trailing, -5)
-                        .offset(x: -5, y: 0)
-                        .frame(maxHeight: 140)
-                }
+                TextArea(title: "Note", text: $formConfig.note)
             }
             .navigationTitle("New Todo")
             .navigationBarTitleDisplayMode(.inline)

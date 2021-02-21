@@ -19,6 +19,8 @@
 		F120E29025E14DF9005E9411 /* TodoListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F120E28E25E14DF9005E9411 /* TodoListItem.swift */; };
 		F120E29425E15042005E9411 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F120E29325E15042005E9411 /* CheckBox.swift */; };
 		F120E29525E15042005E9411 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = F120E29325E15042005E9411 /* CheckBox.swift */; };
+		F1801D4025E23A1800440F52 /* TodoFormSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1801D3F25E23A1800440F52 /* TodoFormSheet.swift */; };
+		F1801D4125E23A1800440F52 /* TodoFormSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1801D3F25E23A1800440F52 /* TodoFormSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,7 @@
 		F120E28725E13E16005E9411 /* TodoStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoStore.swift; sourceTree = "<group>"; };
 		F120E28E25E14DF9005E9411 /* TodoListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListItem.swift; sourceTree = "<group>"; };
 		F120E29325E15042005E9411 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		F1801D3F25E23A1800440F52 /* TodoFormSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoFormSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +109,7 @@
 				F120E27425E13D38005E9411 /* TodoListView.swift */,
 				F120E28E25E14DF9005E9411 /* TodoListItem.swift */,
 				F120E29325E15042005E9411 /* CheckBox.swift */,
+				F1801D3F25E23A1800440F52 /* TodoFormSheet.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -220,6 +224,7 @@
 				F120E28F25E14DF9005E9411 /* TodoListItem.swift in Sources */,
 				F120E25D25E13B9A005E9411 /* SwiftUITodoAppApp.swift in Sources */,
 				F120E29425E15042005E9411 /* CheckBox.swift in Sources */,
+				F1801D4025E23A1800440F52 /* TodoFormSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +237,7 @@
 				F120E29025E14DF9005E9411 /* TodoListItem.swift in Sources */,
 				F120E28125E13DE1005E9411 /* TodoListView.swift in Sources */,
 				F120E29525E15042005E9411 /* CheckBox.swift in Sources */,
+				F1801D4125E23A1800440F52 /* TodoFormSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +361,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -376,6 +383,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

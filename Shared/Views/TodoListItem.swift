@@ -14,7 +14,6 @@ struct TodoListItem: View {
     var body: some View {
         CheckBox(isChecked: $isDone) {
             Text(title)
-                .font(.title2)
                 .strikethrough(isDone)
                 .lineLimit(1)
             Spacer()

@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct TodoListView: View {
-    @EnvironmentObject var todoStore: TodoStore
+    @EnvironmentObject private var todoStore: TodoStore
+    @State private var isTodoSheetPresented = false
     
     func addTodo() {
-        todoStore.addTodoItem(item: TodoItem(title: "New Todo Item"))
+        isTodoSheetPresented.toggle()
     }
     
     var body: some View {
@@ -25,10 +26,13 @@ struct TodoListView: View {
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: addTodo) {
-                        Label("Add", systemImage: "plus")
+                        Label("New Todo", systemImage: "plus")
                     }
                 }
             }
+        }
+        .sheet(isPresented: $isTodoSheetPresented) {
+            TodoFormSheet(isPresented: $isTodoSheetPresented)
         }
     }
 }

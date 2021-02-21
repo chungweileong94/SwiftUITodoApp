@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct SwiftUITodoAppApp: App {
-    @StateObject var todoStore = TodoStore()
+    @StateObject private var todoStore = TodoStore()
     
     var body: some Scene {
         WindowGroup {

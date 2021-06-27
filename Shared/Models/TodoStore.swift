@@ -21,8 +21,12 @@ class TodoStore: ObservableObject {
     func addTodoItem(item: TodoItem) {
         items.append(item)
     }
-    
+
     func deleteTodoItems(at offsets: IndexSet) {
         items.remove(atOffsets: offsets)
+    }
+
+    func moveTodoItem(from: IndexSet, to: Int) {
+        items.move(fromOffsets: from, toOffset: to)
     }
 }

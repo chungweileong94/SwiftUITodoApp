@@ -10,6 +10,7 @@ import SwiftUI
 struct TodoListView: View {
     @EnvironmentObject private var todoStore: TodoStore
     @State private var isTodoSheetPresented = false
+    @State private var editMode = EditMode.inactive
 
     func addTodo() {
         isTodoSheetPresented.toggle()
@@ -17,25 +18,29 @@ struct TodoListView: View {
 
     var body: some View {
         NavigationView {
-            List {
-                ForEach(Array(todoStore.items.enumerated()), id: \.element.id) { index, item in
-                    TodoListItem(
-                        title: item.title,
-                        createAt: item.createAt,
-                        isDone: $todoStore.items[index].isDone
-                    ) {}
-                }
-                .onDelete(perform: todoStore.deleteTodoItems)
-            }
+            TodoList(
+                todoItems: $todoStore.items,
+                editMode: $editMode,
+                onDelete: todoStore.deleteTodoItems,
+                onMove: todoStore.moveTodoItem
+            )
             .navigationTitle("Todo")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    Button(action: addTodo) {
-                        Label("New Todo", systemImage: "plus")
+                    showViewIf(editMode != .active) {
+                        Button(action: addTodo) {
+                            Label("New Todo", systemImage: "plus")
+                        }
+                    }
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(editMode == .active ? "Done" : "Edit") {
+                        withAnimation {
+                            editMode = editMode == .active ? .inactive : .active
+                        }
                     }
                 }
             }
-            .listStyle(InsetGroupedListStyle())
         }
         .sheet(isPresented: $isTodoSheetPresented) {
             TodoFormSheet(isPresented: $isTodoSheetPresented)

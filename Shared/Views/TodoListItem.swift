@@ -11,6 +11,7 @@ struct TodoListItem: View {
     var title: String
     var createAt: Date
     @Binding var isDone: Bool
+    var showActions: Bool?
     var onInfoTap: () -> Void
 
     static let dateFormatter: DateFormatter = {
@@ -30,12 +31,14 @@ struct TodoListItem: View {
                     .foregroundColor(.secondary)
             }
             Spacer()
-            Button(action: {}) {
-                Image(systemName: "info.circle")
-                    .foregroundColor(.blue)
-                    .font(.system(size: 24))
+            showViewIf(showActions ?? true) {
+                Button(action: {}) {
+                    Image(systemName: "info.circle")
+                        .foregroundColor(.blue)
+                        .font(.system(size: 24))
+                }
+                .buttonStyle(BorderlessButtonStyle())
             }
-            .buttonStyle(BorderlessButtonStyle())
         }
         .padding(.vertical, 8)
     }

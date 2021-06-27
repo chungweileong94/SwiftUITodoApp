@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		39E33D4F26887451006BC172 /* view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E33D4E26887451006BC172 /* view.swift */; };
 		39E33D5126887B11006BC172 /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E33D5026887B11006BC172 /* TodoList.swift */; };
 		F120E25D25E13B9A005E9411 /* SwiftUITodoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F120E24A25E13B99005E9411 /* SwiftUITodoAppApp.swift */; };
 		F120E25E25E13B9A005E9411 /* SwiftUITodoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F120E24A25E13B99005E9411 /* SwiftUITodoAppApp.swift */; };
@@ -28,7 +27,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		39E33D4E26887451006BC172 /* view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = view.swift; sourceTree = "<group>"; };
 		39E33D5026887B11006BC172 /* TodoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoList.swift; sourceTree = "<group>"; };
 		F120E24A25E13B99005E9411 /* SwiftUITodoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITodoAppApp.swift; sourceTree = "<group>"; };
 		F120E24C25E13B9A005E9411 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -63,14 +61,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		39E33D4D26887434006BC172 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				39E33D4E26887451006BC172 /* view.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		F120E24425E13B99005E9411 = {
 			isa = PBXGroup;
 			children = (
@@ -84,7 +74,6 @@
 		F120E24925E13B99005E9411 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				39E33D4D26887434006BC172 /* Utils */,
 				F120E28625E13E05005E9411 /* Models */,
 				F120E26D25E13BFF005E9411 /* Views */,
 				F120E24A25E13B99005E9411 /* SwiftUITodoAppApp.swift */,
@@ -238,7 +227,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				39E33D5126887B11006BC172 /* TodoList.swift in Sources */,
-				39E33D4F26887451006BC172 /* view.swift in Sources */,
 				F120E27525E13D38005E9411 /* TodoListView.swift in Sources */,
 				F1F10F2125E2B74600F747AE /* TextArea.swift in Sources */,
 				F120E28825E13E16005E9411 /* TodoStore.swift in Sources */,

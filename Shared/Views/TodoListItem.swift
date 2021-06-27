@@ -21,7 +21,10 @@ struct TodoListItem: View {
     }()
 
     var body: some View {
-        CheckBox(isChecked: $isDone) {
+        HStack {
+            if showActions ?? true {
+                CheckBox(isChecked: $isDone)
+            }
             VStack(alignment: .leading) {
                 Text(title)
                     .strikethrough(isDone)
@@ -31,7 +34,7 @@ struct TodoListItem: View {
                     .foregroundColor(.secondary)
             }
             Spacer()
-            showViewIf(showActions ?? true) {
+            if showActions ?? true {
                 Button(action: {}) {
                     Image(systemName: "info.circle")
                         .foregroundColor(.blue)
@@ -49,7 +52,12 @@ struct TodoListItem_PreviewsController: View {
     @State var item = TodoItem(title: "Todo Iten 1")
 
     var body: some View {
-        TodoListItem(title: item.title, createAt: item.createAt, isDone: $item.isDone) {}
+        TodoListItem(
+            title: item.title,
+            createAt: item.createAt,
+            isDone: $item.isDone
+        ) {}
+            .padding()
     }
 }
 

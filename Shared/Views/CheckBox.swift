@@ -21,13 +21,11 @@ private struct CustomToggleStyle: ToggleStyle {
     }
 }
 
-struct CheckBox<Label>: View where Label: View {
+struct CheckBox: View {
     @Binding var isChecked: Bool
-    let label: Label
 
-    init(isChecked: Binding<Bool>, @ViewBuilder label: () -> Label) {
+    init(isChecked: Binding<Bool>) {
         self._isChecked = isChecked
-        self.label = label()
     }
 
     func toggle() {
@@ -35,10 +33,8 @@ struct CheckBox<Label>: View where Label: View {
     }
 
     var body: some View {
-        Toggle(isOn: $isChecked) {
-            label
-        }
-        .toggleStyle(CustomToggleStyle())
+        Toggle(isOn: $isChecked) {}
+            .toggleStyle(CustomToggleStyle())
     }
 }
 
@@ -47,11 +43,8 @@ struct CheckBox_PreviewsController: View {
     @State var isChecked: Bool
 
     var body: some View {
-        CheckBox(isChecked: $isChecked) {
-            Text("Label")
-                .font(.title)
-        }
-        .padding()
+        CheckBox(isChecked: $isChecked)
+            .padding()
     }
 }
 

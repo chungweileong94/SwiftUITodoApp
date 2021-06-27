@@ -24,10 +24,10 @@ struct TodoListView: View {
                 onDelete: todoStore.deleteTodoItems,
                 onMove: todoStore.moveTodoItem
             )
-            .navigationTitle("Todo")
+            .navigationTitle("Todo Items")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    showViewIf(editMode != .active) {
+                    if editMode != .active {
                         Button(action: addTodo) {
                             Label("New Todo", systemImage: "plus")
                         }

@@ -40,7 +40,7 @@ struct TodoListItem: View {
                         .foregroundColor(.blue)
                         .font(.system(size: 24))
                 }
-                .buttonStyle(BorderlessButtonStyle())
+                .buttonStyle(.borderless)
             }
         }
         .padding(.vertical, 8)

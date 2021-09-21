@@ -27,7 +27,7 @@ struct TodoList: View {
             .onMove(perform: onMove)
             .animation(nil)
         }
-        .listStyle(InsetGroupedListStyle())
+        .listStyle(.insetGrouped)
         .environment(\.editMode, $editMode)
     }
 }

@@ -2,7 +2,7 @@
 //  TodoListItem.swift
 //  SwiftUITodoApp
 //
-//  Created by White Room 02 on 20/02/2021.
+//  Created by Chung Wei Leong on 20/02/2021.
 //
 
 import SwiftUI

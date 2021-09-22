@@ -2,7 +2,7 @@
 //  Todo.swift
 //  SwiftUITodoApp (iOS)
 //
-//  Created by White Room 02 on 20/02/2021.
+//  Created by Chung Wei Leong on 20/02/2021.
 //
 
 import Foundation

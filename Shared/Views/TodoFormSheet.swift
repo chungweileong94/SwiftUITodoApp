@@ -21,7 +21,7 @@ struct TodoFormSheet: View {
         todoStore.addTodoItem(item: TodoItem(title: formConfig.title, note: formConfig.note))
         dismiss()
     }
-    
+
     func cancel() {
         dismiss()
     }

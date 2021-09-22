@@ -11,8 +11,7 @@ struct TodoListItem: View {
     var title: String
     var createAt: Date
     @Binding var isDone: Bool
-    var showActions: Bool?
-    var onInfoTap: () -> Void
+    var showActions: Bool = true
 
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -22,26 +21,20 @@ struct TodoListItem: View {
 
     var body: some View {
         HStack {
-            if showActions ?? true {
+            if showActions {
                 CheckBox(isChecked: $isDone)
             }
             VStack(alignment: .leading) {
                 Text(title)
                     .strikethrough(isDone)
                     .lineLimit(1)
-                Text("\(createAt, formatter: Self.dateFormatter)")
-                    .font(.callout)
-                    .foregroundColor(.secondary)
+                if showActions {
+                    Text("\(createAt, formatter: Self.dateFormatter)")
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                }
             }
             Spacer()
-            if showActions ?? true {
-                Button(action: {}) {
-                    Image(systemName: "info.circle")
-                        .foregroundColor(.blue)
-                        .font(.system(size: 24))
-                }
-                .buttonStyle(.borderless)
-            }
         }
         .padding(.vertical, 8)
     }
@@ -56,8 +49,7 @@ struct TodoListItem_PreviewsController: View {
             title: item.title,
             createAt: item.createAt,
             isDone: $item.isDone
-        ) {}
-            .padding()
+        ).padding()
     }
 }
 

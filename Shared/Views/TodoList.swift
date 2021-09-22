@@ -21,11 +21,10 @@ struct TodoList: View {
                     createAt: item.createAt,
                     isDone: $todoItems[index].isDone,
                     showActions: editMode != .active
-                ) {}
+                )
             }
             .onDelete(perform: onDelete)
             .onMove(perform: onMove)
-            .animation(nil)
         }
         .listStyle(.insetGrouped)
         .environment(\.editMode, $editMode)

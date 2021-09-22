@@ -43,7 +43,7 @@ struct TodoListView: View {
             }
         }
         .sheet(isPresented: $isTodoSheetPresented) {
-            TodoFormSheet(isPresented: $isTodoSheetPresented)
+            TodoFormSheet()
         }
     }
 }

@@ -13,16 +13,16 @@ private struct TodoFormConfig {
 }
 
 struct TodoFormSheet: View {
-    @Binding var isPresented: Bool
+    @Environment(\.dismiss) var dismiss
     @State private var formConfig = TodoFormConfig()
     @EnvironmentObject private var todoStore: TodoStore
 
-    func dismiss() {
-        isPresented = false
-    }
-
     func add() {
         todoStore.addTodoItem(item: TodoItem(title: formConfig.title, note: formConfig.note))
+        dismiss()
+    }
+    
+    func cancel() {
         dismiss()
     }
 
@@ -36,7 +36,7 @@ struct TodoFormSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button(action: dismiss) {
+                    Button(action: cancel) {
                         Text("Cancel")
                     }
                 }

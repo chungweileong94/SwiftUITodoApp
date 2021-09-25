@@ -15,11 +15,11 @@ struct TodoList: View {
 
     var body: some View {
         List {
-            ForEach(Array(todoItems.enumerated()), id: \.element.id) { index, item in
+            ForEach($todoItems) { $item in
                 TodoListItem(
                     title: item.title,
                     createAt: item.createAt,
-                    isDone: $todoItems[index].isDone,
+                    isDone: $item.isDone,
                     showActions: editMode != .active
                 )
             }

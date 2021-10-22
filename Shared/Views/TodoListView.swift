@@ -12,7 +12,7 @@ struct TodoListView: View {
     @EnvironmentObject private var todoStore: TodoStore
     @State private var isTodoSheetPresented = false
     @State private var editMode = EditMode.inactive
-    
+
     /**
      This state is to workaround the bug where the toolbar button become un-pressable after closing the sheet
      https://stackoverflow.com/questions/60485329/swiftui-modal-presentation-works-only-once-from-navigationbaritems/60492031#60492031
@@ -25,13 +25,43 @@ struct TodoListView: View {
 
     var body: some View {
         NavigationView {
-            TodoList(
-                todoItems: $todoStore.items,
-                editMode: $editMode,
-                onDelete: todoStore.deleteTodoItems,
-                onMove: todoStore.moveTodoItem
-            )
-            .navigationTitle("Todo Items")
+            Group {
+                if ($todoStore.items.count) != 0 {
+                    TodoList(
+                        todoItems: $todoStore.items,
+                        editMode: $editMode,
+                        onDelete: todoStore.deleteTodoItems,
+                        onMove: todoStore.moveTodoItem
+                    )
+                } else {
+                    VStack {
+                        Spacer()
+                        LottieViewer(name: "Empty")
+                            .frame(height: 200)
+                            .padding(.horizontal)
+                        Text("Looks like nothing here")
+                            .font(.headline)
+                            .padding(.bottom, 1)
+                        Text("Add some todos now!")
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                        Spacer()
+                        Spacer()
+                        Spacer()
+                        Button(action: addTodo) {
+                            HStack {
+                                Spacer()
+                                Image(systemName: "plus")
+                                Text("Add").fontWeight(.bold)
+                                Spacer()
+                            }.padding(.horizontal).padding(.vertical, 8)
+                        }
+                        .buttonStyle(BorderedProminentButtonStyle()).padding(.horizontal)
+                        Spacer()
+                    }
+                }
+            }
+            .navigationTitle("Todo List")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     if editMode != .active {

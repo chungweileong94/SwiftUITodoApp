@@ -3,10 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3924E81C27231983005F8F75 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3924E81B27231983005F8F75 /* Lottie */; };
+		3924E81E272319BC005F8F75 /* LottieViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3924E81D272319BC005F8F75 /* LottieViewer.swift */; };
+		3924E81F272319BC005F8F75 /* LottieViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3924E81D272319BC005F8F75 /* LottieViewer.swift */; };
+		3924E82227231E91005F8F75 /* Empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 3924E82127231E91005F8F75 /* Empty.json */; };
+		3924E82327231E91005F8F75 /* Empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 3924E82127231E91005F8F75 /* Empty.json */; };
 		39E33D5126887B11006BC172 /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E33D5026887B11006BC172 /* TodoList.swift */; };
 		F120E25D25E13B9A005E9411 /* SwiftUITodoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F120E24A25E13B99005E9411 /* SwiftUITodoAppApp.swift */; };
 		F120E25E25E13B9A005E9411 /* SwiftUITodoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F120E24A25E13B99005E9411 /* SwiftUITodoAppApp.swift */; };
@@ -27,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3924E81D272319BC005F8F75 /* LottieViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieViewer.swift; sourceTree = "<group>"; };
+		3924E82127231E91005F8F75 /* Empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Empty.json; sourceTree = "<group>"; };
 		39E33D5026887B11006BC172 /* TodoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoList.swift; sourceTree = "<group>"; };
 		F120E24A25E13B99005E9411 /* SwiftUITodoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITodoAppApp.swift; sourceTree = "<group>"; };
 		F120E24C25E13B9A005E9411 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -48,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3924E81C27231983005F8F75 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +69,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3924E82027231E7D005F8F75 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				3924E82127231E91005F8F75 /* Empty.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 		F120E24425E13B99005E9411 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +90,7 @@
 		F120E24925E13B99005E9411 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				3924E82027231E7D005F8F75 /* Lottie */,
 				F120E28625E13E05005E9411 /* Models */,
 				F120E26D25E13BFF005E9411 /* Views */,
 				F120E24A25E13B99005E9411 /* SwiftUITodoAppApp.swift */,
@@ -117,6 +134,7 @@
 				F1801D3F25E23A1800440F52 /* TodoFormSheet.swift */,
 				F1F10F2025E2B74600F747AE /* TextArea.swift */,
 				39E33D5026887B11006BC172 /* TodoList.swift */,
+				3924E81D272319BC005F8F75 /* LottieViewer.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -145,6 +163,9 @@
 			dependencies = (
 			);
 			name = "SwiftUITodoApp (iOS)";
+			packageProductDependencies = (
+				3924E81B27231983005F8F75 /* Lottie */,
+			);
 			productName = "SwiftUITodoApp (iOS)";
 			productReference = F120E25125E13B9A005E9411 /* SwiftUITodoApp.app */;
 			productType = "com.apple.product-type.application";
@@ -192,6 +213,9 @@
 				Base,
 			);
 			mainGroup = F120E24425E13B99005E9411;
+			packageReferences = (
+				3924E81A27231983005F8F75 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = F120E25225E13B9A005E9411 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -207,6 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3924E82227231E91005F8F75 /* Empty.json in Resources */,
 				F120E26125E13B9A005E9411 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,6 +240,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3924E82327231E91005F8F75 /* Empty.json in Resources */,
 				F120E26225E13B9A005E9411 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,6 +254,7 @@
 			files = (
 				39E33D5126887B11006BC172 /* TodoList.swift in Sources */,
 				F120E27525E13D38005E9411 /* TodoListView.swift in Sources */,
+				3924E81E272319BC005F8F75 /* LottieViewer.swift in Sources */,
 				F1F10F2125E2B74600F747AE /* TextArea.swift in Sources */,
 				F120E28825E13E16005E9411 /* TodoStore.swift in Sources */,
 				F120E28F25E14DF9005E9411 /* TodoListItem.swift in Sources */,
@@ -243,6 +270,7 @@
 			files = (
 				F120E25E25E13B9A005E9411 /* SwiftUITodoAppApp.swift in Sources */,
 				F1F10F2225E2B74600F747AE /* TextArea.swift in Sources */,
+				3924E81F272319BC005F8F75 /* LottieViewer.swift in Sources */,
 				F120E28B25E13E1A005E9411 /* TodoStore.swift in Sources */,
 				F120E29025E14DF9005E9411 /* TodoListItem.swift in Sources */,
 				F120E28125E13DE1005E9411 /* TodoListView.swift in Sources */,
@@ -487,6 +515,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3924E81A27231983005F8F75 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3924E81B27231983005F8F75 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3924E81A27231983005F8F75 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F120E24525E13B99005E9411 /* Project object */;
 }

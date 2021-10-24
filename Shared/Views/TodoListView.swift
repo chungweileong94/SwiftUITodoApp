@@ -46,8 +46,6 @@ struct TodoListView: View {
                             .font(.footnote)
                             .foregroundColor(.secondary)
                         Spacer()
-                        Spacer()
-                        Spacer()
                         Button(action: addTodo) {
                             HStack {
                                 Spacer()

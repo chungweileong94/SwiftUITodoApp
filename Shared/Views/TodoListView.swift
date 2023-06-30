@@ -24,7 +24,7 @@ struct TodoListView: View {
     }
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             Group {
                 if ($todoStore.items.count) != 0 {
                     TodoList(

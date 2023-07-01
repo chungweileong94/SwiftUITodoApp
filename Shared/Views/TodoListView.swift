@@ -12,17 +12,17 @@ struct TodoListView: View {
     @EnvironmentObject private var todoStore: TodoStore
     @State private var isTodoSheetPresented = false
     @State private var editMode = EditMode.inactive
-
+    
     /**
      This state is to workaround the bug where the toolbar button become un-pressable after closing the sheet
      https://stackoverflow.com/questions/60485329/swiftui-modal-presentation-works-only-once-from-navigationbaritems/60492031#60492031
      */
     @State private var toolbarItemButtonID = UUID()
-
+    
     func addTodo() {
         isTodoSheetPresented.toggle()
     }
-
+    
     var body: some View {
         NavigationStack {
             Group {

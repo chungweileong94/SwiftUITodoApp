@@ -70,7 +70,7 @@
 			children = (
 				395A943C2A51B1850071FEB8 /* LottieAssets */,
 				395A943B2A51B16E0071FEB8 /* Models */,
-				395A942D2A51B1000071FEB8 /* View */,
+				395A942D2A51B1000071FEB8 /* Views */,
 				395A941E2A51B0F20071FEB8 /* SwiftUITodoAppApp.swift */,
 				395A94202A51B0F20071FEB8 /* ContentView.swift */,
 				395A94222A51B0F20071FEB8 /* Assets.xcassets */,
@@ -88,7 +88,7 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		395A942D2A51B1000071FEB8 /* View */ = {
+		395A942D2A51B1000071FEB8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				395A94322A51B1260071FEB8 /* CheckBox.swift */,
@@ -97,7 +97,7 @@
 				395A942F2A51B1260071FEB8 /* TodoListItem.swift */,
 				395A94302A51B1260071FEB8 /* TodoListView.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		395A943B2A51B16E0071FEB8 /* Models */ = {

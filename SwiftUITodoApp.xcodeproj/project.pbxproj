@@ -7,12 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3924E81E272319BC005F8F75 /* LottieViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3924E81D272319BC005F8F75 /* LottieViewer.swift */; };
-		3924E81F272319BC005F8F75 /* LottieViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3924E81D272319BC005F8F75 /* LottieViewer.swift */; };
+		3923D45A2A517E1600632178 /* LottieUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3923D4592A517E1600632178 /* LottieUI */; };
 		3924E82227231E91005F8F75 /* Empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 3924E82127231E91005F8F75 /* Empty.json */; };
 		3924E82327231E91005F8F75 /* Empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 3924E82127231E91005F8F75 /* Empty.json */; };
-		39883D7228E74893009C9BEB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 39883D7128E74893009C9BEB /* Lottie */; };
-		39883D7528E7491A009C9BEB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 39883D7428E7491A009C9BEB /* Lottie */; };
 		39E33D5126887B11006BC172 /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E33D5026887B11006BC172 /* TodoList.swift */; };
 		F120E25D25E13B9A005E9411 /* SwiftUITodoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F120E24A25E13B99005E9411 /* SwiftUITodoAppApp.swift */; };
 		F120E25E25E13B9A005E9411 /* SwiftUITodoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F120E24A25E13B99005E9411 /* SwiftUITodoAppApp.swift */; };
@@ -31,7 +28,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3924E81D272319BC005F8F75 /* LottieViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieViewer.swift; sourceTree = "<group>"; };
 		3924E82127231E91005F8F75 /* Empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Empty.json; sourceTree = "<group>"; };
 		39E33D5026887B11006BC172 /* TodoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoList.swift; sourceTree = "<group>"; };
 		F120E24A25E13B99005E9411 /* SwiftUITodoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITodoAppApp.swift; sourceTree = "<group>"; };
@@ -53,7 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39883D7528E7491A009C9BEB /* Lottie in Frameworks */,
+				3923D45A2A517E1600632178 /* LottieUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,7 +57,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39883D7228E74893009C9BEB /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +135,6 @@
 				F120E29325E15042005E9411 /* CheckBox.swift */,
 				F1801D3F25E23A1800440F52 /* TodoFormSheet.swift */,
 				39E33D5026887B11006BC172 /* TodoList.swift */,
-				3924E81D272319BC005F8F75 /* LottieViewer.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -170,7 +164,7 @@
 			);
 			name = "SwiftUITodoApp (iOS)";
 			packageProductDependencies = (
-				39883D7428E7491A009C9BEB /* Lottie */,
+				3923D4592A517E1600632178 /* LottieUI */,
 			);
 			productName = "SwiftUITodoApp (iOS)";
 			productReference = F120E25125E13B9A005E9411 /* SwiftUITodoApp.app */;
@@ -190,7 +184,6 @@
 			);
 			name = "SwiftUITodoApp (macOS)";
 			packageProductDependencies = (
-				39883D7128E74893009C9BEB /* Lottie */,
 			);
 			productName = "SwiftUITodoApp (macOS)";
 			productReference = F120E25925E13B9A005E9411 /* SwiftUITodoApp.app */;
@@ -224,7 +217,7 @@
 			);
 			mainGroup = F120E24425E13B99005E9411;
 			packageReferences = (
-				39883D7028E74893009C9BEB /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				3923D4582A517E1600632178 /* XCRemoteSwiftPackageReference "LottieUI" */,
 			);
 			productRefGroup = F120E25225E13B9A005E9411 /* Products */;
 			projectDirPath = "";
@@ -264,7 +257,6 @@
 			files = (
 				39E33D5126887B11006BC172 /* TodoList.swift in Sources */,
 				F120E27525E13D38005E9411 /* TodoListView.swift in Sources */,
-				3924E81E272319BC005F8F75 /* LottieViewer.swift in Sources */,
 				F120E28825E13E16005E9411 /* TodoStore.swift in Sources */,
 				F120E28F25E14DF9005E9411 /* TodoListItem.swift in Sources */,
 				F120E25D25E13B9A005E9411 /* SwiftUITodoAppApp.swift in Sources */,
@@ -278,7 +270,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F120E25E25E13B9A005E9411 /* SwiftUITodoAppApp.swift in Sources */,
-				3924E81F272319BC005F8F75 /* LottieViewer.swift in Sources */,
 				F120E28B25E13E1A005E9411 /* TodoStore.swift in Sources */,
 				F120E29025E14DF9005E9411 /* TodoListItem.swift in Sources */,
 				F120E28125E13DE1005E9411 /* TodoListView.swift in Sources */,
@@ -535,26 +526,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		39883D7028E74893009C9BEB /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+		3923D4582A517E1600632178 /* XCRemoteSwiftPackageReference "LottieUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			repositoryURL = "https://github.com/jasudev/LottieUI.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = revision;
+				revision = 0cd5b54a1c8467b19c01f56395aec179087b62e2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		39883D7128E74893009C9BEB /* Lottie */ = {
+		3923D4592A517E1600632178 /* LottieUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 39883D7028E74893009C9BEB /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
-		};
-		39883D7428E7491A009C9BEB /* Lottie */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 39883D7028E74893009C9BEB /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
+			package = 3923D4582A517E1600632178 /* XCRemoteSwiftPackageReference "LottieUI" */;
+			productName = LottieUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

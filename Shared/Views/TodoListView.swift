@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import LottieUI
 
 struct TodoListView: View {
     @Environment(\.dismiss) var dismiss
@@ -36,7 +37,7 @@ struct TodoListView: View {
                 } else {
                     VStack {
                         Spacer()
-                        LottieViewer(name: "Empty")
+                        LottieView(state: LUStateData(type: .name("Empty", Bundle.main), loopMode: .loop))
                             .frame(height: 200)
                             .padding(.horizontal)
                         Text("Looks like nothing here")

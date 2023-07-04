@@ -16,22 +16,22 @@ struct TodoFormSheet: View {
     @Environment(\.dismiss) var dismiss
     @State private var formConfig = TodoFormConfig()
     @EnvironmentObject private var todoStore: TodoStore
-    
+
     func add() {
         todoStore.addTodoItem(item: TodoItem(title: formConfig.title, note: formConfig.note))
         dismiss()
     }
-    
+
     func cancel() {
         dismiss()
     }
-    
+
     var body: some View {
         NavigationView {
             Form {
                 TextField("Title", text: $formConfig.title)
                 TextField("Note", text: $formConfig.note, axis: .vertical)
-                    .lineLimit(3...5)
+                    .lineLimit(3 ... 5)
             }
             .navigationTitle("New Todo")
             .navigationBarTitleDisplayMode(.inline)
@@ -41,7 +41,7 @@ struct TodoFormSheet: View {
                         Text("Cancel")
                     }
                 }
-                
+
                 ToolbarItem(placement: .confirmationAction) {
                     Button(action: add) {
                         Text("Add")

@@ -41,22 +41,22 @@ struct TodoListItem: View {
 }
 
 #if DEBUG
-struct TodoListItem_PreviewsController: View {
-    @State var item = TodoItem(title: "Todo Iten 1")
+    struct TodoListItem_PreviewsController: View {
+        @State var item = TodoItem(title: "Todo Iten 1")
 
-    var body: some View {
-        TodoListItem(
-            title: item.title,
-            createAt: item.createAt,
-            isDone: $item.isDone
-        ).padding()
+        var body: some View {
+            TodoListItem(
+                title: item.title,
+                createAt: item.createAt,
+                isDone: $item.isDone
+            ).padding()
+        }
     }
-}
 
-struct TodoListItem_Previews: PreviewProvider {
-    static var previews: some View {
-        TodoListItem_PreviewsController()
-            .previewLayout(.sizeThatFits)
+    struct TodoListItem_Previews: PreviewProvider {
+        static var previews: some View {
+            TodoListItem_PreviewsController()
+                .previewLayout(.sizeThatFits)
+        }
     }
-}
 #endif

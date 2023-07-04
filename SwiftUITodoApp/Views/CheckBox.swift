@@ -25,7 +25,7 @@ struct CheckBox: View {
     @Binding var isChecked: Bool
 
     init(isChecked: Binding<Bool>) {
-        self._isChecked = isChecked
+        _isChecked = isChecked
     }
 
     func toggle() {
@@ -39,25 +39,25 @@ struct CheckBox: View {
 }
 
 #if DEBUG
-struct CheckBox_PreviewsController: View {
-    @State var isChecked: Bool
+    struct CheckBox_PreviewsController: View {
+        @State var isChecked: Bool
 
-    var body: some View {
-        CheckBox(isChecked: $isChecked)
-            .padding()
-    }
-}
-
-struct CheckBox_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            CheckBox_PreviewsController(isChecked: true)
-                .previewLayout(.sizeThatFits)
-                .previewDisplayName("Checked")
-            CheckBox_PreviewsController(isChecked: false)
-                .previewLayout(.sizeThatFits)
-                .previewDisplayName("Unchecked")
+        var body: some View {
+            CheckBox(isChecked: $isChecked)
+                .padding()
         }
     }
-}
+
+    struct CheckBox_Previews: PreviewProvider {
+        static var previews: some View {
+            Group {
+                CheckBox_PreviewsController(isChecked: true)
+                    .previewLayout(.sizeThatFits)
+                    .previewDisplayName("Checked")
+                CheckBox_PreviewsController(isChecked: false)
+                    .previewLayout(.sizeThatFits)
+                    .previewDisplayName("Unchecked")
+            }
+        }
+    }
 #endif

@@ -35,8 +35,6 @@
 		395A94322A51B1260071FEB8 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		395A943D2A51B1B90071FEB8 /* Empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Empty.json; sourceTree = "<group>"; };
 		395A943F2A51B1C30071FEB8 /* TodoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoStore.swift; sourceTree = "<group>"; };
-		39BF102F2A53B74300C8DEED /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		39BF10312A53BA9A00C8DEED /* Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +52,6 @@
 		395A94122A51B0F10071FEB8 = {
 			isa = PBXGroup;
 			children = (
-				39BF102E2A53B72B00C8DEED /* BuildTools */,
 				395A941D2A51B0F20071FEB8 /* SwiftUITodoApp */,
 				395A941C2A51B0F20071FEB8 /* Products */,
 			);
@@ -119,15 +116,6 @@
 			path = LottieAssets;
 			sourceTree = "<group>";
 		};
-		39BF102E2A53B72B00C8DEED /* BuildTools */ = {
-			isa = PBXGroup;
-			children = (
-				39BF102F2A53B74300C8DEED /* Package.swift */,
-				39BF10312A53BA9A00C8DEED /* Empty.swift */,
-			);
-			path = BuildTools;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,7 +123,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 395A942A2A51B0F20071FEB8 /* Build configuration list for PBXNativeTarget "SwiftUITodoApp" */;
 			buildPhases = (
-				39BF102D2A53B3B400C8DEED /* SwiftFormat */,
 				395A94172A51B0F20071FEB8 /* Sources */,
 				395A94182A51B0F20071FEB8 /* Frameworks */,
 				395A94192A51B0F20071FEB8 /* Resources */,
@@ -200,28 +187,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		39BF102D2A53B3B400C8DEED /* SwiftFormat */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftFormat;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "cd BuildTools\nSDKROOT=(xcrun --sdk macosx --show-sdk-path)\nswift run -c release swiftformat --swiftversion 5 \"$SRCROOT\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		395A94172A51B0F20071FEB8 /* Sources */ = {

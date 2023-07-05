@@ -22,7 +22,11 @@ struct TodoListItem: View {
     var body: some View {
         HStack {
             if showActions {
-                CheckBox(isChecked: $isDone)
+                Button(action: { isDone.toggle() }) {
+                    Image(systemName: isDone ? "checkmark.circle.fill" : "circle")
+                        .font(.system(size: 24))
+                        .foregroundColor(isDone ? .green : .gray)
+                }
             }
             VStack(alignment: .leading) {
                 Text(title)

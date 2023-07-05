@@ -15,7 +15,6 @@
 		395A94342A51B1260071FEB8 /* TodoListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395A942F2A51B1260071FEB8 /* TodoListItem.swift */; };
 		395A94352A51B1260071FEB8 /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395A94302A51B1260071FEB8 /* TodoListView.swift */; };
 		395A94362A51B1260071FEB8 /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395A94312A51B1260071FEB8 /* TodoList.swift */; };
-		395A94372A51B1260071FEB8 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395A94322A51B1260071FEB8 /* CheckBox.swift */; };
 		395A943A2A51B15A0071FEB8 /* LottieUI in Frameworks */ = {isa = PBXBuildFile; productRef = 395A94392A51B15A0071FEB8 /* LottieUI */; };
 		395A943E2A51B1B90071FEB8 /* Empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 395A943D2A51B1B90071FEB8 /* Empty.json */; };
 		395A94402A51B1C30071FEB8 /* TodoStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395A943F2A51B1C30071FEB8 /* TodoStore.swift */; };
@@ -32,7 +31,6 @@
 		395A942F2A51B1260071FEB8 /* TodoListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoListItem.swift; sourceTree = "<group>"; };
 		395A94302A51B1260071FEB8 /* TodoListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
 		395A94312A51B1260071FEB8 /* TodoList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoList.swift; sourceTree = "<group>"; };
-		395A94322A51B1260071FEB8 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		395A943D2A51B1B90071FEB8 /* Empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Empty.json; sourceTree = "<group>"; };
 		395A943F2A51B1C30071FEB8 /* TodoStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,7 +89,6 @@
 		395A942D2A51B1000071FEB8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				395A94322A51B1260071FEB8 /* CheckBox.swift */,
 				395A942E2A51B1260071FEB8 /* TodoFormSheet.swift */,
 				395A94312A51B1260071FEB8 /* TodoList.swift */,
 				395A942F2A51B1260071FEB8 /* TodoListItem.swift */,
@@ -196,7 +193,6 @@
 				395A94212A51B0F20071FEB8 /* ContentView.swift in Sources */,
 				395A941F2A51B0F20071FEB8 /* SwiftUITodoAppApp.swift in Sources */,
 				395A94352A51B1260071FEB8 /* TodoListView.swift in Sources */,
-				395A94372A51B1260071FEB8 /* CheckBox.swift in Sources */,
 				395A94362A51B1260071FEB8 /* TodoList.swift in Sources */,
 				395A94402A51B1C30071FEB8 /* TodoStore.swift in Sources */,
 				395A94342A51B1260071FEB8 /* TodoListItem.swift in Sources */,

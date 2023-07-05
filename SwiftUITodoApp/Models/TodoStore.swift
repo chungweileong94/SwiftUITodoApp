@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Observation
 
 struct TodoItem: Identifiable {
     let id = UUID()
@@ -15,8 +16,9 @@ struct TodoItem: Identifiable {
     let createAt = Date()
 }
 
-class TodoStore: ObservableObject {
-    @Published var items = [TodoItem]()
+@Observable class TodoStore {
+    var items = [TodoItem]()
+    var test = ""
 
     func addTodoItem(item: TodoItem) {
         items.append(item)

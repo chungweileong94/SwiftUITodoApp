@@ -15,7 +15,7 @@ private struct TodoFormConfig {
 struct TodoFormSheet: View {
     @Environment(\.dismiss) var dismiss
     @State private var formConfig = TodoFormConfig()
-    @EnvironmentObject private var todoStore: TodoStore
+    @Environment(TodoStore.self) var todoStore: TodoStore
 
     func add() {
         todoStore.addTodoItem(item: TodoItem(title: formConfig.title, note: formConfig.note))

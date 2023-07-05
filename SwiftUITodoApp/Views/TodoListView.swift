@@ -10,7 +10,7 @@ import SwiftUI
 
 struct TodoListView: View {
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject private var todoStore: TodoStore
+    @Environment(TodoStore.self) private var todoStore
     @State private var isTodoSheetPresented = false
     @State private var editMode = EditMode.inactive
 
@@ -27,13 +27,8 @@ struct TodoListView: View {
     var body: some View {
         NavigationStack {
             Group {
-                if ($todoStore.items.count) != 0 {
-                    TodoList(
-                        todoItems: $todoStore.items,
-                        editMode: $editMode,
-                        onDelete: todoStore.deleteTodoItems,
-                        onMove: todoStore.moveTodoItem
-                    )
+                if (todoStore.items.count) != 0 {
+                    TodoList(store: todoStore, editMode: $editMode)
                 } else {
                     VStack {
                         Spacer()
@@ -91,6 +86,5 @@ struct TodoListView: View {
 struct TodoListView_Previews: PreviewProvider {
     static var previews: some View {
         TodoListView()
-            .environmentObject(TodoStore())
     }
 }

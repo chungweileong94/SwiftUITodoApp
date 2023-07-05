@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct TodoList: View {
-    @Binding var todoItems: [TodoItem]
+    @Bindable var store: TodoStore
     @Binding var editMode: EditMode
-    let onDelete: (IndexSet) -> Void
-    let onMove: (IndexSet, Int) -> Void
 
     var body: some View {
         List {
-            ForEach($todoItems) { $item in
+            ForEach($store.items) { $item in
                 TodoListItem(
                     title: item.title,
                     createAt: item.createAt,
@@ -23,8 +21,8 @@ struct TodoList: View {
                     showActions: editMode != .active
                 )
             }
-            .onDelete(perform: onDelete)
-            .onMove(perform: onMove)
+            .onDelete(perform: store.deleteTodoItems)
+            .onMove(perform: store.moveTodoItem)
         }
         .listStyle(.insetGrouped)
         .environment(\.editMode, $editMode)

@@ -11,8 +11,7 @@ import SwiftUI
 struct TodoList: View {
     @Environment(\.modelContext) private var modelContext
     var items: [TodoItem]
-    @Binding var editMode: EditMode
-    var onDelete: (_ offsets: IndexSet) -> Void
+    var onDelete: (_ item: TodoItem) -> Void
 
     var incompleteItems: [TodoItem] {
         items.filter { !$0.isDone }
@@ -24,25 +23,16 @@ struct TodoList: View {
 
     var body: some View {
         List {
-            ForEach(incompleteItems) { item in
-                TodoListItem(
-                    item: item,
-                    showActions: editMode != .active
-                )
+            ForEach(incompleteItems) {
+                TodoListItem(item: $0, onDelete: onDelete)
             }
-            .onDelete(perform: onDelete)
 
             Section((completedItems.count > 0) ? "Completed" : "") {
-                ForEach(completedItems) { item in
-                    TodoListItem(
-                        item: item,
-                        showActions: editMode != .active
-                    )
+                ForEach(completedItems) {
+                    TodoListItem(item: $0, onDelete: onDelete)
                 }
-                .onDelete(perform: onDelete)
             }
         }
         .listStyle(.insetGrouped)
-        .environment(\.editMode, $editMode)
     }
 }

@@ -13,11 +13,10 @@ struct TodoListView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) var dismiss
     @State private var isTodoSheetPresented = false
-    @State private var editMode = EditMode.inactive
 
     @Query(sort: \TodoItem.createdAt, order: .reverse, animation: .spring)
     private var todoItems: [TodoItem]
-    
+
     /**
      This state is to workaround the bug where the toolbar button become un-pressable after closing the sheet
      https://stackoverflow.com/questions/60485329/swiftui-modal-presentation-works-only-once-from-navigationbaritems/60492031#60492031
@@ -34,9 +33,8 @@ struct TodoListView: View {
                 if (todoItems.count) != 0 {
                     TodoList(
                         items: todoItems,
-                        editMode: $editMode,
-                        onDelete: { offsets in
-                            offsets.forEach { modelContext.delete(todoItems[$0]) }
+                        onDelete: { item in
+                            modelContext.delete(item)
                         }
                     )
                 } else {
@@ -68,20 +66,9 @@ struct TodoListView: View {
             .navigationTitle("Todo List")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    if editMode != .active {
-                        Button(action: addTodo) {
-                            Label("New Todo", systemImage: "plus")
-                        }.id(toolbarItemButtonID)
-                    }
-                }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    if todoItems.count != 0 {
-                        Button(editMode == .active ? "Done" : "Edit") {
-                            withAnimation {
-                                editMode = editMode == .active ? .inactive : .active
-                            }
-                        }.id(toolbarItemButtonID)
-                    }
+                    Button(action: addTodo) {
+                        Label("New Todo", systemImage: "plus")
+                    }.id(toolbarItemButtonID)
                 }
             }
         }

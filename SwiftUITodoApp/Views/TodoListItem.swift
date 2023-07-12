@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TodoListItem: View {
     @Bindable var item: TodoItem
-    var showActions: Bool = true
+    var onDelete: (_ item: TodoItem) -> Void
 
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -19,28 +19,27 @@ struct TodoListItem: View {
 
     var body: some View {
         HStack {
-            if showActions {
-                Button(action: {
-                    withAnimation { item.isDone.toggle() }
-                }) {
-                    Image(systemName: item.isDone ? "checkmark.circle.fill" : "circle")
-                        .font(.system(size: 24))
-                        .foregroundColor(item.isDone ? .green : .gray)
-                }
+            Button(action: {
+                withAnimation { item.isDone.toggle() }
+            }) {
+                Image(systemName: item.isDone ? "checkmark.circle.fill" : "circle")
+                    .font(.system(size: 24))
+                    .foregroundColor(item.isDone ? .green : .gray)
             }
             VStack(alignment: .leading) {
                 Text(item.title)
                     .strikethrough(item.isDone)
                     .lineLimit(1)
-                if showActions {
-                    Text("\(item.createdAt, formatter: Self.dateFormatter)")
-                        .font(.footnote)
-                        .foregroundColor(.secondary)
-                }
+                Text("\(item.createdAt, formatter: Self.dateFormatter)")
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
             }
             Spacer()
         }
         .padding(.vertical, 8)
+        .swipeActions {
+            Button("Delete", role: .destructive) { onDelete(item) }
+        }
     }
 }
 
@@ -49,7 +48,7 @@ struct TodoListItem: View {
         @State var item = TodoItem(title: "Todo Iten 1", note: "")
 
         var body: some View {
-            TodoListItem(item: item)
+            TodoListItem(item: item, onDelete: { _ in })
                 .padding()
         }
     }

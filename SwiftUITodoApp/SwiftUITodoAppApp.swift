@@ -9,12 +9,10 @@ import SwiftUI
 
 @main
 struct SwiftUITodoAppApp: App {
-    @State private var todoStore = TodoStore()
-
     var body: some Scene {
         WindowGroup {
             TodoListView()
-                .environment(todoStore)
+                .modelContainer(for: [TodoItem.self])
         }
     }
 }

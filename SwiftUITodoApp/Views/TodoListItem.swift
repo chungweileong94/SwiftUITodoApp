@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct TodoListItem: View {
-    var title: String
-    var createAt: Date
-    @Binding var isDone: Bool
+    @Bindable var item: TodoItem
     var showActions: Bool = true
 
     static let dateFormatter: DateFormatter = {
@@ -22,18 +20,20 @@ struct TodoListItem: View {
     var body: some View {
         HStack {
             if showActions {
-                Button(action: { isDone.toggle() }) {
-                    Image(systemName: isDone ? "checkmark.circle.fill" : "circle")
+                Button(action: {
+                    withAnimation { item.isDone.toggle() }
+                }) {
+                    Image(systemName: item.isDone ? "checkmark.circle.fill" : "circle")
                         .font(.system(size: 24))
-                        .foregroundColor(isDone ? .green : .gray)
+                        .foregroundColor(item.isDone ? .green : .gray)
                 }
             }
             VStack(alignment: .leading) {
-                Text(title)
-                    .strikethrough(isDone)
+                Text(item.title)
+                    .strikethrough(item.isDone)
                     .lineLimit(1)
                 if showActions {
-                    Text("\(createAt, formatter: Self.dateFormatter)")
+                    Text("\(item.createdAt, formatter: Self.dateFormatter)")
                         .font(.footnote)
                         .foregroundColor(.secondary)
                 }
@@ -46,21 +46,16 @@ struct TodoListItem: View {
 
 #if DEBUG
     struct TodoListItem_PreviewsController: View {
-        @State var item = TodoItem(title: "Todo Iten 1")
+        @State var item = TodoItem(title: "Todo Iten 1", note: "")
 
         var body: some View {
-            TodoListItem(
-                title: item.title,
-                createAt: item.createAt,
-                isDone: $item.isDone
-            ).padding()
+            TodoListItem(item: item)
+                .padding()
         }
     }
 
-    struct TodoListItem_Previews: PreviewProvider {
-        static var previews: some View {
-            TodoListItem_PreviewsController()
-                .previewLayout(.sizeThatFits)
-        }
+    #Preview {
+        TodoListItem_PreviewsController()
+            .previewLayout(.sizeThatFits)
     }
 #endif

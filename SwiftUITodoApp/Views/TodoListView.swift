@@ -6,14 +6,18 @@
 //
 
 import LottieUI
+import SwiftData
 import SwiftUI
 
 struct TodoListView: View {
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) var dismiss
-    @Environment(TodoStore.self) private var todoStore
     @State private var isTodoSheetPresented = false
     @State private var editMode = EditMode.inactive
 
+    @Query(sort: \TodoItem.createdAt, order: .reverse, animation: .spring)
+    private var todoItems: [TodoItem]
+    
     /**
      This state is to workaround the bug where the toolbar button become un-pressable after closing the sheet
      https://stackoverflow.com/questions/60485329/swiftui-modal-presentation-works-only-once-from-navigationbaritems/60492031#60492031
@@ -27,8 +31,14 @@ struct TodoListView: View {
     var body: some View {
         NavigationStack {
             Group {
-                if (todoStore.items.count) != 0 {
-                    TodoList(store: todoStore, editMode: $editMode)
+                if (todoItems.count) != 0 {
+                    TodoList(
+                        items: todoItems,
+                        editMode: $editMode,
+                        onDelete: { offsets in
+                            offsets.forEach { modelContext.delete(todoItems[$0]) }
+                        }
+                    )
                 } else {
                     VStack {
                         Spacer()
@@ -65,7 +75,7 @@ struct TodoListView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
-                    if todoStore.items.count != 0 {
+                    if todoItems.count != 0 {
                         Button(editMode == .active ? "Done" : "Edit") {
                             withAnimation {
                                 editMode = editMode == .active ? .inactive : .active
@@ -83,8 +93,7 @@ struct TodoListView: View {
     }
 }
 
-struct TodoListView_Previews: PreviewProvider {
-    static var previews: some View {
-        TodoListView()
-    }
+#Preview {
+    TodoListView()
+        .modelContainer(previewContainer)
 }

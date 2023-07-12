@@ -13,12 +13,12 @@ private struct TodoFormConfig {
 }
 
 struct TodoFormSheet: View {
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) var dismiss
     @State private var formConfig = TodoFormConfig()
-    @Environment(TodoStore.self) var todoStore: TodoStore
 
     func add() {
-        todoStore.addTodoItem(item: TodoItem(title: formConfig.title, note: formConfig.note))
+        modelContext.insert(TodoItem(title: formConfig.title, note: formConfig.note))
         dismiss()
     }
 

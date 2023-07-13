@@ -9,7 +9,7 @@ import LottieUI
 import SwiftData
 import SwiftUI
 
-struct TodoListView: View {
+struct TodoListScreen: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) var dismiss
     @State private var isTodoSheetPresented = false
@@ -81,6 +81,6 @@ struct TodoListView: View {
 }
 
 #Preview {
-    TodoListView()
+    TodoListScreen()
         .modelContainer(previewContainer)
 }

@@ -30,7 +30,6 @@ struct SectionHeader: View {
 
 struct TodoListScreen: View {
     @Environment(\.modelContext) private var modelContext
-    @Environment(\.dismiss) var dismiss
     @State private var isTodoSheetPresented = false
 
     @Query(
@@ -48,12 +47,6 @@ struct TodoListScreen: View {
         animation: .spring
     )
     private var completedItems: [TodoItem]
-
-    /**
-     This state is to workaround the bug where the toolbar button become un-pressable after closing the sheet
-     https://stackoverflow.com/questions/60485329/swiftui-modal-presentation-works-only-once-from-navigationbaritems/60492031#60492031
-     */
-    @State private var toolbarItemButtonID = UUID()
 
     func addItem() {
         isTodoSheetPresented.toggle()
@@ -112,14 +105,12 @@ struct TodoListScreen: View {
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: addItem) {
                         Label("New Todo", systemImage: "plus")
-                    }.id(toolbarItemButtonID)
+                    }
                 }
             }
         }
         .sheet(isPresented: $isTodoSheetPresented) {
-            TodoFormSheet().onDisappear {
-                toolbarItemButtonID = UUID()
-            }
+            TodoFormSheet()
         }
     }
 }

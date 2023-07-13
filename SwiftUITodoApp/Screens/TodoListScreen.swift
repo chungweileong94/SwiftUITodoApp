@@ -9,13 +9,45 @@ import LottieUI
 import SwiftData
 import SwiftUI
 
+struct SectionHeader: View {
+    private var text: String?
+
+    init(_ text: String?) {
+        self.text = text
+    }
+
+    var body: some View {
+        if let text = text {
+            Text(text)
+                .textCase(nil)
+                .font(.headline)
+                .foregroundColor(.primary)
+        } else {
+            EmptyView()
+        }
+    }
+}
+
 struct TodoListScreen: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) var dismiss
     @State private var isTodoSheetPresented = false
 
-    @Query(sort: \TodoItem.createdAt, order: .reverse, animation: .spring)
-    private var todoItems: [TodoItem]
+    @Query(
+        filter: #Predicate { !$0.isDone },
+        sort: \TodoItem.createdAt,
+        order: .reverse,
+        animation: .spring
+    )
+    private var incompletedItems: [TodoItem]
+
+    @Query(
+        filter: #Predicate { $0.isDone },
+        sort: \TodoItem.createdAt,
+        order: .reverse,
+        animation: .spring
+    )
+    private var completedItems: [TodoItem]
 
     /**
      This state is to workaround the bug where the toolbar button become un-pressable after closing the sheet
@@ -23,21 +55,33 @@ struct TodoListScreen: View {
      */
     @State private var toolbarItemButtonID = UUID()
 
-    func addTodo() {
+    func addItem() {
         isTodoSheetPresented.toggle()
+    }
+
+    func deleteItem(item: TodoItem) {
+        modelContext.delete(item)
     }
 
     var body: some View {
         NavigationStack {
             Group {
-                if (todoItems.count) != 0 {
-                    TodoList(
-                        items: todoItems,
-                        onDelete: { item in
-                            modelContext.delete(item)
+                if incompletedItems.count > 0 || completedItems.count > 0 {
+                    List {
+                        Section(header: SectionHeader((incompletedItems.count > 0) ? "In Progress" : nil)) {
+                            ForEach(incompletedItems) {
+                                TodoListItem(item: $0, onDelete: deleteItem)
+                            }
                         }
-                    )
+
+                        Section(header: SectionHeader((completedItems.count > 0) ? "Completed" : nil)) {
+                            ForEach(completedItems) {
+                                TodoListItem(item: $0, onDelete: deleteItem)
+                            }
+                        }
+                    }
                 } else {
+                    // Empty view
                     VStack {
                         Spacer()
                         LottieView(state: LUStateData(type: .name("Empty", Bundle.main), loopMode: .loop))
@@ -50,7 +94,7 @@ struct TodoListScreen: View {
                             .font(.footnote)
                             .foregroundColor(.secondary)
                         Spacer()
-                        Button(action: addTodo) {
+                        Button(action: addItem) {
                             HStack {
                                 Spacer()
                                 Image(systemName: "plus")
@@ -63,10 +107,10 @@ struct TodoListScreen: View {
                     }
                 }
             }
-            .navigationTitle("Todo List")
+            .navigationTitle("My Todos")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    Button(action: addTodo) {
+                    Button(action: addItem) {
                         Label("New Todo", systemImage: "plus")
                     }.id(toolbarItemButtonID)
                 }

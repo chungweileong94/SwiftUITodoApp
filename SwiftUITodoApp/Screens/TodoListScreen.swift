@@ -5,7 +5,7 @@
 //  Created by Chung Wei Leong on 20/02/2021.
 //
 
-import LottieUI
+import Lottie
 import SwiftData
 import SwiftUI
 
@@ -77,8 +77,11 @@ struct TodoListScreen: View {
                     // Empty view
                     VStack {
                         Spacer()
-                        LottieView(state: LUStateData(type: .name("Empty", Bundle.main), loopMode: .loop))
-                            .frame(height: 200)
+                        #warning("TODO: Migrate package to lottie-spam, once it supports SwiftUI")
+                        LottieView(animation: .named("Empty"))
+                            .resizable()
+                            .looping()
+                            .frame(maxHeight: 200)
                             .padding(.horizontal)
                         Text("Looks like nothing here")
                             .font(.headline)

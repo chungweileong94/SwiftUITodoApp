@@ -38,6 +38,10 @@ struct TodoListScreen: View {
     )
     private var completedItems: [TodoItem]
 
+    private var hasIncompletedItems: Bool { incompletedItems.count > 0 }
+    private var hasCompletedItems: Bool { completedItems.count > 0 }
+    private var hasItems: Bool { hasIncompletedItems || hasCompletedItems }
+
     func addItem() {
         isTodoSheetPresented.toggle()
     }
@@ -49,23 +53,21 @@ struct TodoListScreen: View {
     var body: some View {
         NavigationStack {
             Group {
-                if incompletedItems.count > 0 || completedItems.count > 0 {
+                if hasItems {
                     List {
-                        Section(
-                            header: Text((incompletedItems.count > 0) ? "In Progress" : "")
-                                .modifier(SectionHeaderModifier()))
-                        {
-                            ForEach(incompletedItems) {
-                                TodoListItem(item: $0, onDelete: deleteItem)
+                        if hasIncompletedItems {
+                            Section(header: Text("In Progress").modifier(SectionHeaderModifier())) {
+                                ForEach(incompletedItems) {
+                                    TodoListItem(item: $0, onDelete: deleteItem)
+                                }
                             }
                         }
 
-                        Section(
-                            header: Text((completedItems.count > 0) ? "Completed" : "")
-                                .modifier(SectionHeaderModifier()))
-                        {
-                            ForEach(completedItems) {
-                                TodoListItem(item: $0, onDelete: deleteItem)
+                        if hasCompletedItems {
+                            Section(header: Text("Completed").modifier(SectionHeaderModifier())) {
+                                ForEach(completedItems) {
+                                    TodoListItem(item: $0, onDelete: deleteItem)
+                                }
                             }
                         }
                     }

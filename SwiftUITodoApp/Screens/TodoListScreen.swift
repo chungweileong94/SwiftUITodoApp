@@ -9,22 +9,12 @@ import Lottie
 import SwiftData
 import SwiftUI
 
-struct SectionHeader: View {
-    private var text: String?
-
-    init(_ text: String?) {
-        self.text = text
-    }
-
-    var body: some View {
-        if let text = text {
-            Text(text)
-                .textCase(nil)
-                .font(.headline)
-                .foregroundColor(.primary)
-        } else {
-            EmptyView()
-        }
+struct SectionHeaderModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .textCase(nil)
+            .font(.headline)
+            .foregroundColor(.primary)
     }
 }
 
@@ -61,46 +51,26 @@ struct TodoListScreen: View {
             Group {
                 if incompletedItems.count > 0 || completedItems.count > 0 {
                     List {
-                        Section(header: SectionHeader((incompletedItems.count > 0) ? "In Progress" : nil)) {
+                        Section(
+                            header: Text((incompletedItems.count > 0) ? "In Progress" : "")
+                                .modifier(SectionHeaderModifier()))
+                        {
                             ForEach(incompletedItems) {
                                 TodoListItem(item: $0, onDelete: deleteItem)
                             }
                         }
 
-                        Section(header: SectionHeader((completedItems.count > 0) ? "Completed" : nil)) {
+                        Section(
+                            header: Text((completedItems.count > 0) ? "Completed" : "")
+                                .modifier(SectionHeaderModifier()))
+                        {
                             ForEach(completedItems) {
                                 TodoListItem(item: $0, onDelete: deleteItem)
                             }
                         }
                     }
                 } else {
-                    // Empty view
-                    VStack {
-                        Spacer()
-                        #warning("TODO: Migrate package to lottie-spam, once it supports SwiftUI")
-                        LottieView(animation: .named("Empty"))
-                            .resizable()
-                            .looping()
-                            .frame(maxHeight: 200)
-                            .padding(.horizontal)
-                        Text("Looks like nothing here")
-                            .font(.headline)
-                            .padding(.bottom, 1)
-                        Text("Add some todos now!")
-                            .font(.footnote)
-                            .foregroundColor(.secondary)
-                        Spacer()
-                        Button(action: addItem) {
-                            HStack {
-                                Spacer()
-                                Image(systemName: "plus")
-                                Text("Add").fontWeight(.bold)
-                                Spacer()
-                            }.padding(.horizontal).padding(.vertical, 8)
-                        }
-                        .buttonStyle(BorderedProminentButtonStyle()).padding(.horizontal)
-                        Spacer()
-                    }
+                    emptyView
                 }
             }
             .navigationTitle("My Todos")
@@ -114,6 +84,35 @@ struct TodoListScreen: View {
         }
         .sheet(isPresented: $isTodoSheetPresented) {
             TodoFormSheet()
+        }
+    }
+
+    var emptyView: some View {
+        VStack {
+            Spacer()
+            #warning("TODO: Migrate package to lottie-spam, once it supports SwiftUI")
+            LottieView(animation: .named("Empty"))
+                .resizable()
+                .looping()
+                .frame(maxHeight: 200)
+                .padding(.horizontal)
+            Text("Looks like nothing here")
+                .font(.headline)
+                .padding(.bottom, 1)
+            Text("Add some todos now!")
+                .font(.footnote)
+                .foregroundColor(.secondary)
+            Spacer()
+            Button(action: addItem) {
+                HStack {
+                    Spacer()
+                    Image(systemName: "plus")
+                    Text("Add").fontWeight(.bold)
+                    Spacer()
+                }.padding(.horizontal).padding(.vertical, 8)
+            }
+            .buttonStyle(BorderedProminentButtonStyle()).padding(.horizontal)
+            Spacer()
         }
     }
 }

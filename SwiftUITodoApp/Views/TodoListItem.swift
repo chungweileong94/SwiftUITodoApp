@@ -11,17 +11,19 @@ struct TodoListItem: View {
     @Bindable var item: TodoItem
     var onDelete: (_ item: TodoItem) -> Void
 
-    static let dateFormatter: DateFormatter = {
+    static let dateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .full
         return formatter
     }()
 
+    func toggleDoneStatus() {
+        withAnimation { item.isDone.toggle() }
+    }
+
     var body: some View {
         HStack {
-            Button(action: {
-                withAnimation { item.isDone.toggle() }
-            }) {
+            Button(action: toggleDoneStatus) {
                 Image(systemName: item.isDone ? "checkmark.circle.fill" : "circle")
                     .font(.system(size: 24))
                     .foregroundColor(item.isDone ? .green : .gray)

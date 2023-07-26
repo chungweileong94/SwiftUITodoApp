@@ -22,19 +22,18 @@ struct TodoListScreen: View {
     @Environment(\.modelContext) private var modelContext
     @State private var isTodoSheetPresented = false
 
+    #warning("Enable animation once the next release of xcode fix the error")
     @Query(
-        filter: #Predicate { !$0.isDone },
-        sort: \TodoItem.createdAt,
-        order: .reverse,
-        animation: .spring
+        filter: #Predicate<TodoItem> { !$0.isDone },
+        sort: [SortDescriptor(\TodoItem.createdAt, order: .reverse)]
+//        animation: .spring
     )
     private var incompletedItems: [TodoItem]
 
     @Query(
-        filter: #Predicate { $0.isDone },
-        sort: \TodoItem.createdAt,
-        order: .reverse,
-        animation: .spring
+        filter: #Predicate<TodoItem> { $0.isDone },
+        sort: [SortDescriptor(\TodoItem.createdAt, order: .reverse)]
+//        animation: .spring
     )
     private var completedItems: [TodoItem]
 

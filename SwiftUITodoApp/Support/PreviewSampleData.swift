@@ -11,7 +11,7 @@ import SwiftData
 let previewContainer: ModelContainer = {
     do {
         let container = try ModelContainer(
-            for: [TodoItem.self]
+            for: TodoItem.self
         )
         container.mainContext.insert(TodoItem(title: "Item 1", note: "Item 1"))
         return container

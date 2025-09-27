@@ -23,18 +23,17 @@ struct TodoListScreen: View {
     @State private var isTodoSheetPresented = false
 
     @Query(
-        filter: #Predicate<TodoItem> { !$0.isDone },
-        sort: [SortDescriptor(\TodoItem.createdAt, order: .reverse)],
-        animation: .spring
+        sort: [SortDescriptor(\TodoItem.createdAt, order: .reverse)]
     )
-    private var incompletedItems: [TodoItem]
+    private var items: [TodoItem]
 
-    @Query(
-        filter: #Predicate<TodoItem> { $0.isDone },
-        sort: [SortDescriptor(\TodoItem.createdAt, order: .reverse)],
-        animation: .spring
-    )
-    private var completedItems: [TodoItem]
+    private var incompletedItems: [TodoItem] {
+        items.filter { $0.isDone == false }
+    }
+
+    private var completedItems: [TodoItem] {
+        items.filter { $0.isDone == true }
+    }
 
     private var hasIncompletedItems: Bool { incompletedItems.count > 0 }
     private var hasCompletedItems: Bool { completedItems.count > 0 }
@@ -55,7 +54,7 @@ struct TodoListScreen: View {
                     List {
                         if hasIncompletedItems {
                             Section(header: Text("In Progress").modifier(SectionHeaderModifier())) {
-                                ForEach(incompletedItems) {
+                                ForEach(incompletedItems, id: \.id) {
                                     TodoListItem(item: $0, onDelete: deleteItem)
                                 }
                             }
@@ -63,7 +62,7 @@ struct TodoListScreen: View {
 
                         if hasCompletedItems {
                             Section(header: Text("Completed").modifier(SectionHeaderModifier())) {
-                                ForEach(completedItems) {
+                                ForEach(completedItems, id: \.id) {
                                     TodoListItem(item: $0, onDelete: deleteItem)
                                 }
                             }

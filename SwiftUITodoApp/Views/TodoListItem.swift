@@ -18,7 +18,9 @@ struct TodoListItem: View {
     }()
     
     func toggleDoneStatus() {
-        withAnimation { item.isDone.toggle() }
+        withAnimation(.spring) {
+            item.isDone.toggle()
+        }
     }
     
     var body: some View {
@@ -39,7 +41,7 @@ struct TodoListItem: View {
             Spacer()
         }
         .padding(.vertical, 8)
-        .swipeActions {
+        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
             Button(action: toggleDoneStatus) {
                 Label(
                     item.isDone ? "Mark as Incomplete" : "Mark as Complete",
@@ -68,3 +70,4 @@ struct TodoListItem_PreviewsController: View {
         .previewLayout(.sizeThatFits)
 }
 #endif
+

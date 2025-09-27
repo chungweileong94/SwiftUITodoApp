@@ -52,8 +52,7 @@ struct TodoFormSheet: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button(action: add) {
-                        Label("Add", systemImage: "plus")
-                            .labelStyle(.titleAndIcon)
+                        Label("Done", systemImage: "checkmark")
                     }
                     .disabled(formConfig.title.isEmpty)
                     .buttonStyle(.borderedProminent)

@@ -29,24 +29,34 @@ struct TodoFormSheet: View {
     var body: some View {
         NavigationView {
             Form {
-                TextField("Title", text: $formConfig.title)
-                TextField("Note", text: $formConfig.note, axis: .vertical)
-                    .lineLimit(3 ... 5)
+                TextField("Title", text: $formConfig.title.animation(.bouncy))
+                ZStack(alignment: .topLeading) {
+                    if formConfig.note.isEmpty {
+                        Text("Note")
+                            .foregroundStyle(.placeholder)
+                            .opacity(0.5)
+                            .allowsHitTesting(false)
+                    }
+                    TextEditor(text: $formConfig.note)
+                        .padding(.horizontal, -4)
+                        .padding(.vertical, -8)
+                }
             }
             .navigationTitle("New Todo")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(action: cancel) {
-                        Text("Cancel")
+                        Image(systemName: "xmark")
                     }
                 }
-
                 ToolbarItem(placement: .confirmationAction) {
                     Button(action: add) {
-                        Text("Add")
+                        Label("Add", systemImage: "plus")
+                            .labelStyle(.titleAndIcon)
                     }
-                    .disabled(formConfig.title.count < 1)
+                    .disabled(formConfig.title.isEmpty)
+                    .buttonStyle(.borderedProminent)
                 }
             }
         }

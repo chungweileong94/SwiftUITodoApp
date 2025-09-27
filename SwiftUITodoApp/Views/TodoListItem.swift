@@ -10,17 +10,17 @@ import SwiftUI
 struct TodoListItem: View {
     @Bindable var item: TodoItem
     var onDelete: (_ item: TodoItem) -> Void
-
+    
     static let dateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .full
         return formatter
     }()
-
+    
     func toggleDoneStatus() {
         withAnimation { item.isDone.toggle() }
     }
-
+    
     var body: some View {
         HStack {
             Button(action: toggleDoneStatus) {
@@ -40,23 +40,31 @@ struct TodoListItem: View {
         }
         .padding(.vertical, 8)
         .swipeActions {
-            Button("Delete", role: .destructive) { onDelete(item) }
+            Button(action: toggleDoneStatus) {
+                Label(
+                    item.isDone ? "Mark as Incomplete" : "Mark as Complete",
+                    systemImage: item.isDone ? "minus.circle" : "checkmark.circle")
+            }
+            .tint(item.isDone ? .yellow : .accentColor)
+            Button(role: .destructive, action: { onDelete(item) }) {
+                Label("Delete", systemImage: "trash")
+            }
         }
     }
 }
 
 #if DEBUG
-    struct TodoListItem_PreviewsController: View {
-        @State var item = TodoItem(title: "Todo Iten 1", note: "")
-
-        var body: some View {
-            TodoListItem(item: item, onDelete: { _ in })
-                .padding()
-        }
+struct TodoListItem_PreviewsController: View {
+    @State var item = TodoItem(title: "Todo Iten 1", note: "")
+    
+    var body: some View {
+        TodoListItem(item: item, onDelete: { _ in })
+            .padding()
     }
+}
 
-    #Preview {
-        TodoListItem_PreviewsController()
-            .previewLayout(.sizeThatFits)
-    }
+#Preview {
+    TodoListItem_PreviewsController()
+        .previewLayout(.sizeThatFits)
+}
 #endif
